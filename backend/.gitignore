@@ -1,3 +1,6 @@
 node_modules/
 database.db
-.env
+.envdata/
+node_modules/
+data/
+node_modules/
