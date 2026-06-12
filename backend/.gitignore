@@ -1,6 +1,4 @@
 node_modules/
-database.db
-.envdata/
-node_modules/
 data/
-node_modules/
+.env
+database.db
