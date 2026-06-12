@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - JobPortal</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-briefcase"></i>
+                <span>JobPortal</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="index.html#jobs"><i class="fas fa-search"></i> Browse Jobs</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <i class="fas fa-user-plus"></i>
+                <h2>Create Account</h2>
+                <p>Join thousands of job seekers and employers</p>
+            </div>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i> Full Name</label>
+                    <input type="text" id="name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-envelope"></i> Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-lock"></i> Password</label>
+                    <input type="password" id="password" placeholder="Create a password (min 6 characters)" required>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-user-tag"></i> I am a</label>
+                    <select id="role" class="role-select">
+                        <option value="jobseeker">💼 Job Seeker - Looking for jobs</option>
+                        <option value="employer">🏢 Employer - Hiring talent</option>
+                    </select>
+                </div>
+                <div id="employerFields" style="display: none;">
+                    <div class="form-group">
+                        <label><i class="fas fa-building"></i> Company Name</label>
+                        <input type="text" id="company" placeholder="Enter your company name">
+                    </div>
+                </div>
+                <div id="jobseekerFields">
+                    <div class="form-group">
+                        <label><i class="fas fa-map-marker-alt"></i> Location</label>
+                        <input type="text" id="location" placeholder="City, State">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-code"></i> Skills (comma separated)</label>
+                        <input type="text" id="skills" placeholder="e.g., JavaScript, Python, React">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-phone"></i> Phone Number</label>
+                        <input type="tel" id="phone" placeholder="Your phone number">
+                    </div>
+                </div>
+                <button type="submit" class="btn-auth">Create Account <i class="fas fa-check"></i></button>
+            </form>
+            <div class="auth-footer">
+                <p>Already have an account? <a href="login.html">Sign in</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

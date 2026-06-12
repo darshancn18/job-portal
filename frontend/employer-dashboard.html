@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employer Dashboard - JobPortal</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-briefcase"></i>
+                <span>JobPortal</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <div class="dashboard-sidebar">
+            <div class="employer-profile">
+                <i class="fas fa-building"></i>
+                <h3 id="companyName">Company Name</h3>
+                <p id="employerEmail">employer@company.com</p>
+            </div>
+            <div class="dashboard-menu">
+                <button class="menu-btn active" data-tab="post-job">
+                    <i class="fas fa-plus-circle"></i> Post New Job
+                </button>
+                <button class="menu-btn" data-tab="my-jobs">
+                    <i class="fas fa-briefcase"></i> My Jobs
+                </button>
+                <button class="menu-btn" data-tab="applications">
+                    <i class="fas fa-users"></i> Applications
+                </button>
+                <button class="menu-btn" data-tab="profile">
+                    <i class="fas fa-id-card"></i> Company Profile
+                </button>
+            </div>
+        </div>
+
+        <div class="dashboard-content">
+            <!-- Post Job Tab -->
+            <div id="post-job" class="tab-content active">
+                <div class="dashboard-card">
+                    <h2><i class="fas fa-plus-circle"></i> Post a New Job</h2>
+                    <form id="postJobForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Job Title *</label>
+                                <input type="text" id="jobTitle" placeholder="e.g., Senior Software Engineer" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Location *</label>
+                                <input type="text" id="jobLocation" placeholder="e.g., New York, NY or Remote" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Job Type *</label>
+                                <select id="jobType" required>
+                                    <option value="Full-time">Full-time</option>
+                                    <option value="Part-time">Part-time</option>
+                                    <option value="Remote">Remote</option>
+                                    <option value="Contract">Contract</option>
+                                    <option value="Internship">Internship</option>
+                                </select>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Salary Range (min)</label>
+                                    <input type="number" id="salaryMin" placeholder="e.g., 50000">
+                                </div>
+                                <div class="form-group">
+                                    <label>Salary Range (max)</label>
+                                    <input type="number" id="salaryMax" placeholder="e.g., 80000">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Job Description *</label>
+                            <textarea id="jobDescription" rows="4" placeholder="Describe the role, responsibilities, and what makes this opportunity exciting..." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Requirements *</label>
+                            <textarea id="jobRequirements" rows="3" placeholder="List required skills, experience, education..." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Application Deadline *</label>
+                            <input type="date" id="deadline" required>
+                        </div>
+                        <button type="submit" class="btn-primary">Post Job <i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- My Jobs Tab -->
+            <div id="my-jobs" class="tab-content">
+                <div class="dashboard-card">
+                    <h2><i class="fas fa-briefcase"></i> My Job Postings</h2>
+                    <div id="myJobsList" class="jobs-list">
+                        <div class="loading">Loading your jobs...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Applications Tab -->
+            <div id="applications" class="tab-content">
+                <div class="dashboard-card">
+                    <h2><i class="fas fa-users"></i> Job Applications</h2>
+                    <div id="applicationsList" class="applications-list">
+                        <div class="loading">Loading applications...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Tab -->
+            <div id="profile" class="tab-content">
+                <div class="dashboard-card">
+                    <h2><i class="fas fa-id-card"></i> Company Profile</h2>
+                    <form id="updateProfileForm">
+                        <div class="form-group">
+                            <label>Company Name</label>
+                            <input type="text" id="profileCompany" placeholder="Your company name">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" id="profilePhone" placeholder="Contact number">
+                        </div>
+                        <div class="form-group">
+                            <label>Location</label>
+                            <input type="text" id="profileLocation" placeholder="Company location">
+                        </div>
+                        <button type="submit" class="btn-primary">Update Profile</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Job Modal -->
+    <div id="editJobModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Edit Job</h2>
+            <form id="editJobForm">
+                <input type="hidden" id="editJobId">
+                <div class="form-group">
+                    <label>Job Title</label>
+                    <input type="text" id="editTitle" required>
+                </div>
+                <div class="form-group">
+                    <label>Location</label>
+                    <input type="text" id="editLocation" required>
+                </div>
+                <div class="form-group">
+                    <label>Job Type</label>
+                    <select id="editJobType">
+                        <option value="Full-time">Full-time</option>
+                        <option value="Part-time">Part-time</option>
+                        <option value="Remote">Remote</option>
+                        <option value="Contract">Contract</option>
+                        <option value="Internship">Internship</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="editDescription" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Requirements</label>
+                    <textarea id="editRequirements" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Status</label>
+                    <select id="editStatus">
+                        <option value="active">Active</option>
+                        <option value="filled">Filled</option>
+                        <option value="closed">Closed</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

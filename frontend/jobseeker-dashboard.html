@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Seeker Dashboard - JobPortal</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-briefcase"></i>
+                <span>JobPortal</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <div class="dashboard-sidebar">
+            <div class="jobseeker-profile">
+                <i class="fas fa-user-circle"></i>
+                <h3 id="jobseekerName">Your Name</h3>
+                <p id="jobseekerEmail">email@example.com</p>
+            </div>
+            <div class="dashboard-menu">
+                <button class="menu-btn active" data-tab="my-applications">
+                    <i class="fas fa-file-alt"></i> My Applications
+                </button>
+                <button class="menu-btn" data-tab="saved-jobs">
+                    <i class="fas fa-bookmark"></i> Saved Jobs
+                </button>
+                <button class="menu-btn" data-tab="profile">
+                    <i class="fas fa-id-card"></i> My Profile
+                </button>
+            </div>
+        </div>
+
+        <div class="dashboard-content">
+            <!-- My Applications Tab -->
+            <div id="my-applications" class="tab-content active">
+                <div class="dashboard-card">
+                    <h2><i class="fas fa-file-alt"></i> My Job Applications</h2>
+                    <div id="applicationsList" class="applications-list">
+                        <div class="loading">Loading your applications...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Saved Jobs Tab -->
+            <div id="saved-jobs" class="tab-content">
+                <div class="dashboard-card">
+                    <h2><i class="fas fa-bookmark"></i> Saved Jobs</h2>
+                    <div id="savedJobsList">
+                        <p>Feature coming soon - Jobs you save will appear here!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Tab -->
+            <div id="profile" class="tab-content">
+                <div class="dashboard-card">
+                    <h2><i class="fas fa-id-card"></i> My Profile</h2>
+                    <form id="updateProfileForm">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" id="profileName" placeholder="Your full name">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" id="profilePhone" placeholder="Your phone number">
+                        </div>
+                        <div class="form-group">
+                            <label>Location</label>
+                            <input type="text" id="profileLocation" placeholder="City, State">
+                        </div>
+                        <div class="form-group">
+                            <label>Skills (comma separated)</label>
+                            <input type="text" id="profileSkills" placeholder="e.g., JavaScript, Python, React">
+                        </div>
+                        <button type="submit" class="btn-primary">Update Profile</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
